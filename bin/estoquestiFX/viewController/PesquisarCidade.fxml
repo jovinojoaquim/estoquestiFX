@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="estoquestiFX.viewController.PesquisarCidadeController">
+   <children>
+      <Label layoutX="14.0" layoutY="22.0" text="Nome Cidade:" AnchorPane.leftAnchor="14.0" />
+      <TextField fx:id="textFieldCidade" layoutX="14.0" layoutY="48.0" onKeyReleased="#buscarCidade" prefHeight="25.0" prefWidth="219.0" AnchorPane.leftAnchor="14.0" />
+      <Label layoutX="255.0" layoutY="22.0" text="Estado:" AnchorPane.leftAnchor="255.0" />
+      <ComboBox fx:id="comboBoxEstado" layoutX="255.0" layoutY="48.0" onAction="#buscarCidade" onMouseDragReleased="#buscarCidade" prefHeight="25.0" prefWidth="184.0" AnchorPane.leftAnchor="255.0" />
+      <TableView fx:id="tableCidade" layoutX="14.0" layoutY="87.0" onMouseClicked="#salvar" prefHeight="218.0" prefWidth="430.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="19.0">
+        <columns>
+          <TableColumn fx:id="tableColumnNomeCidade" prefWidth="75.0" text="Cidade" />
+          <TableColumn fx:id="tableColumnEstado" prefWidth="75.0" text="Estado" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <HBox layoutX="301.0" layoutY="323.0" spacing="10.0" AnchorPane.rightAnchor="19.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#novaCidade" text="Nova Cidade" />
+            <Button layoutX="223.0" layoutY="327.0" mnemonicParsing="false" text="Selecionar" />
+            <Button layoutX="302.0" layoutY="327.0" mnemonicParsing="false" text="Cancelar" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

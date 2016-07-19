@@ -1,6 +1,5 @@
 package estoquestiFX.app;
 
-import java.awt.BorderLayout;
 import java.io.IOException;
 
 import estoquestiFX.viewController.CategoriaController;
@@ -9,7 +8,6 @@ import estoquestiFX.viewController.PesquisarProdutoController;
 import estoquestiFX.viewController.ProdutoController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;

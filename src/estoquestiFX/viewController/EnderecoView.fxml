@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="estoquestiFX.viewController.EnderecoController">
    <children>
-      <GridPane layoutX="40.0" layoutY="30.0" prefHeight="255.0" prefWidth="344.0">
+      <GridPane layoutX="40.0" layoutY="14.0" prefHeight="255.0" prefWidth="411.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="61.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="10.0" prefWidth="118.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="199.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="10.0" prefWidth="112.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="301.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -30,14 +30,21 @@
             <Label text="Cidade:" GridPane.rowIndex="5" />
             <Label text="CEP" GridPane.rowIndex="4" />
             <Label text="Estado:" GridPane.rowIndex="6" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="textFieldLogradouro" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldNumero" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldComplemento" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldBairro" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldCep" onKeyReleased="#apenasNumero" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldCidade" onAction="#buscarCidade" onKeyTyped="#buscarCidade" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldEstado" disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
+      <Separator layoutX="25.0" layoutY="281.0" prefHeight="0.0" prefWidth="447.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="61.0" />
+      <HBox layoutX="256.0" layoutY="419.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="61.0">
+         <children>
+            <Button layoutX="256.0" layoutY="419.0" mnemonicParsing="false" text="Salvar" />
+            <Button layoutX="324.0" layoutY="419.0" lineSpacing="10.0" mnemonicParsing="false" text="Cancelar" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

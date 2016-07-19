@@ -31,6 +31,8 @@ public class PesquisarCidadeController implements Initializable{
 	List<Cidade> listaDeCidade;
 	ObservableList<String> listaObservable = FXCollections.observableArrayList();
 	ObservableList<Cidade> listaObservableCidade = FXCollections.observableArrayList();
+	private Stage palco;
+	EnderecoController enderecoController = null;
 	
 	@FXML
 	private TextField textFieldCidade;
@@ -46,6 +48,7 @@ public class PesquisarCidadeController implements Initializable{
 	
 	@FXML
 	private TableColumn<Cidade, String> tableColumnEstado;
+	
 	
 	@FXML
 	private void novaCidade(){
@@ -95,7 +98,7 @@ public class PesquisarCidadeController implements Initializable{
 				System.out.println(cidade.getCidade());
 				System.out.println();
 			}
-		}else if(textFieldCidade.getText().length() == 0 || textFieldCidade.getText() == null && comboBoxEstado.getSelectionModel().getSelectedIndex() != -1){
+		}else if(textFieldCidade.getText().length() == 0 && comboBoxEstado.getSelectionModel().getSelectedIndex() != -1){
 			listaDeCidade = bean.buscarCidade(listaDeEstado.get(comboBoxEstado.getSelectionModel().getSelectedIndex()).getId());
 		}else{
 			listaDeCidade = bean.buscarCidade(textFieldCidade.getText());
@@ -108,10 +111,16 @@ public class PesquisarCidadeController implements Initializable{
 	}
 	
 	@FXML
-	private void salvar(){
-		System.out.println(tableCidade.getSelectionModel().getSelectedItem().getId());
-		System.out.println(tableCidade.getSelectionModel().getSelectedItem().getCidade());
-		System.out.println(tableCidade.getSelectionModel().getSelectedItem().getEstado().getNomeEstado());
-		System.out.println();
+	private void selecionarCidade(){
+		enderecoController.recebeCidade(tableCidade.getSelectionModel().getSelectedItem());
+		palco.close();
+	}
+
+	public void setStage(Stage primaryStage) {
+		palco = primaryStage;
+	}
+	
+	public void setEnderecoController(EnderecoController enderecoController) {
+		this.enderecoController = enderecoController;
 	}
 }

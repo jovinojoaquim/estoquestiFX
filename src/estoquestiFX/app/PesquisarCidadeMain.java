@@ -2,6 +2,7 @@ package estoquestiFX.app;
 
 import java.io.IOException;
 
+import estoquestiFX.viewController.EnderecoController;
 import estoquestiFX.viewController.PesquisarCidadeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.stage.Stage;
 
 public class PesquisarCidadeMain extends Application {
 
+	EnderecoController controllerEndereco = null;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -18,7 +21,8 @@ public class PesquisarCidadeMain extends Application {
 		
 			Scene scene = new Scene(loader.load());
 			PesquisarCidadeController controller = loader.getController();
-			
+			controller.setStage(primaryStage);
+			controller.setEnderecoController(controllerEndereco);
 			
 			primaryStage.setScene(scene);
 			
@@ -28,6 +32,14 @@ public class PesquisarCidadeMain extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public EnderecoController getControllerEndereco() {
+		return controllerEndereco;
+	}
+	
+	public void setControllerEndereco(EnderecoController controllerEndereco) {
+		this.controllerEndereco = controllerEndereco;
 	}
 
 	public static void main(String[] args) {

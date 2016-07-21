@@ -33,6 +33,8 @@ public class EnderecoController {
 	private TextField textFieldEstado;
 
 	Stage palco;
+
+	private PesquisarEnderecoController pesquisarEnderecoController;
 	
 	@FXML
 	private void buscarCidade(){
@@ -50,6 +52,8 @@ public class EnderecoController {
 		EnderecoBean bean = new EnderecoBean();
 		bean.salvar(textFieldLogradouro.getText(), textFieldNumero.getText(), textFieldComplemento.getText(),
 				textFieldBairro.getText(), textFieldCep.getText(), cidade);
+		palco.close();
+		pesquisarEnderecoController.listar(pesquisarEnderecoController.listarEnderecos());
 	}
 	
 	public void recebeCidade(Cidade cidade){
@@ -71,6 +75,10 @@ public class EnderecoController {
 	
 	public void setPalco(Stage primaryStage) {
 		this.palco = primaryStage;
+	}
+
+	public void recebePesquisarEnderecoController(PesquisarEnderecoController pesquisarEnderecoController) {
+		this.pesquisarEnderecoController = pesquisarEnderecoController;
 	}
 	
 }

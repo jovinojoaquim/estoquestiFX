@@ -2,6 +2,7 @@ package estoquestiFX.teste;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -21,55 +22,22 @@ import estoquestiFX.domain.Estado;
 
 public class EstadoTeste {
 
-//	private static Validator validator;
-//	
-//	@BeforeClass
-//    public static void setUp() {
-//       ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-//       validator = factory.getValidator();
-//    }
-
-	@Ignore
-	public void test2() {
-		Estado estado = new Estado();
-		estado.setNomeEstado("asd");
-		EstadoDAO dao = new EstadoDAO();
+	@Test
+	public void novoEstado(){
+		EstadoBean ebean = new EstadoBean();
 		
-//		Validator validator = Validar.getFabricaValidacao().validate(estado);
-		
-//		Set<ConstraintViolation<Estado>> validacao = Validar.getFabricaValidacao().validate(estado);
-		
-//		try{
-			dao.salvar(estado);
-			
-//		}catch (Exception e) {
-//			System.out.println(validacao.iterator().next().getMessage());
-//		}
-		
-	}
-	
-	@Ignore
-	public void test() {
-		Estado estado = new Estado();
-		estado.setNomeEstado("asd");
-		EstadoDAO dao = new EstadoDAO();
-		
-//		Validator validator = Validar.getFabricaValidacao();
-//		
-//		Set<ConstraintViolation<Estado>> validacao = validator.validate(estado);
-		
-		try{
-			dao.salvar(estado);
-			
-		}catch (ConstraintViolationException e) {
-			System.out.println(e.getCause());
-		}
+		ebean.salvar("Minas Gerais");
 	}
 	
 	@Test
-	public void teste3(){
-		EstadoBean bean = new EstadoBean();
-		bean.salvar("asd");
+	public void listar(){
+		EstadoBean ebean = new EstadoBean();
+		List<Estado> listaEstado = ebean.listar();
+		
+		for(Estado estado : listaEstado){
+			System.out.println(estado.getId());
+			System.out.println(estado.getNomeEstado());
+		}
 	}
 
 }

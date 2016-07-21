@@ -3,6 +3,7 @@ package estoquestiFX.app;
 import java.io.IOException;
 
 import estoquestiFX.viewController.EnderecoController;
+import estoquestiFX.viewController.PesquisarEnderecoController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +11,8 @@ import javafx.stage.Stage;
 
 public class EnderecoMain extends Application {
 	
+	private PesquisarEnderecoController pesquisarEnderecoController;
+
 	@Override
 	public void start(Stage primaryStage) {
 		FXMLLoader loader = new FXMLLoader();
@@ -20,6 +23,8 @@ public class EnderecoMain extends Application {
 			
 			EnderecoController controller = loader.getController();
 			controller.setPalco(primaryStage);
+			controller.recebePesquisarEnderecoController(pesquisarEnderecoController);
+			
 			primaryStage.setTitle("Novo Endereço");
 			
 			primaryStage.setScene(scene);
@@ -32,5 +37,9 @@ public class EnderecoMain extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public void recebePesquisarEnderecoController(PesquisarEnderecoController pesquisarEnderecoController) {
+		this.pesquisarEnderecoController = pesquisarEnderecoController;
 	}
 }

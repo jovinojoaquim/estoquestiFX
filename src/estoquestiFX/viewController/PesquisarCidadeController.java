@@ -82,7 +82,6 @@ public class PesquisarCidadeController implements Initializable{
 		listaObservableCidade.setAll(listaDeCidade);
 
 		tableCidade.setItems(listaObservableCidade);
-
 		tableColumnNomeCidade.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCidade()));
 		tableColumnEstado.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getEstado().getNomeEstado()));
 	}

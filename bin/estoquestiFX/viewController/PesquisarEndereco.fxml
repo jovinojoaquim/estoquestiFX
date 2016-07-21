@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="387.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="estoquestiFX.viewController.PesquisarEnderecoController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Logradouro:" AnchorPane.leftAnchor="20.0" />
+      <TextField fx:id="textFieldLogradouro" layoutX="14.0" layoutY="38.0" onKeyReleased="#pesquisar" prefHeight="25.0" prefWidth="456.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <TableView fx:id="tableEnderecos" layoutX="20.0" layoutY="81.0" prefHeight="248.0" prefWidth="446.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <columns>
+          <TableColumn fx:id="tableColumnLogradouro" minWidth="150.0" prefWidth="150.0" text="Logradouro" />
+          <TableColumn fx:id="tableColumnNumero" prefWidth="75.0" text="Número" />
+            <TableColumn fx:id="tableColumnBairro" prefWidth="75.0" text="Bairro" />
+            <TableColumn fx:id="tableColumnCidade" minWidth="50.0" prefWidth="50.0" text="Cidade" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <HBox layoutX="243.0" layoutY="348.0" spacing="10.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Button layoutX="243.0" layoutY="348.0" mnemonicParsing="false" onAction="#selecionar" text="Selecionar" />
+            <Button layoutX="304.0" layoutY="348.0" mnemonicParsing="false" onAction="#novoEndereco" text="Novo Endereço" />
+            <Button layoutX="366.0" layoutY="348.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

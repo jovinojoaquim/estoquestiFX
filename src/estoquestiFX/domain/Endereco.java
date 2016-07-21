@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -17,6 +19,10 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Endereco.listar", query = "SELECT endereco FROM Endereco endereco"),
+	@NamedQuery(name = "Endereco.buscar", query = "SELECT endereco FROM Endereco endereco WHERE endereco.logradouro LIKE :logradouro")
+})
 public class Endereco {
 
 	@Id
@@ -26,23 +32,20 @@ public class Endereco {
 	@Column(length = 60, nullable = false)
 	@NotNull(message = "Digite um Logradouro")
 	@NotEmpty(message = "Digite um Logradouro")
-	@Length(min = 4, max = 60, message = "Endereço muito curto. Digite um endereço válido")
-	@Max(value = 60, message = "Endereço muito grande. Digite um endereço Válido")
+	@Length(min = 4, max = 60, message = "Digite um logradouro entre 4 e 60 caracteres")
 	private String logradouro;
 	
 	@Column(length = 11, nullable = false)
 	@NotNull(message = "Digite um Número")
-	@NotEmpty(message = "Digite um número")
 	@Min(value = 1, message = "Digite um número válido")
 	private int numero;
 	
 	@Column(length = 45, nullable = true)
-	@Max(value = 45, message = "Complemento muito grande")
+	@Length(min = 2, max = 45, message = "Complemento muito grande")
 	private String complemento;
 	
 	@Column(length = 45, nullable = false)
-	@Length(min = 3, max = 45, message = "Bairro muito curto. Digite um bairro válido")
-	@Max(value = 45, message = "Bairro muito grande, Digite um Bairro válido")
+	@Length(min = 3, max = 45, message = "Digite um bairro entre 3 e 45 caracteres")
 	private String bairro;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -42,8 +42,8 @@
       <Separator layoutX="25.0" layoutY="281.0" prefHeight="0.0" prefWidth="447.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="61.0" />
       <HBox layoutX="256.0" layoutY="419.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="61.0">
          <children>
-            <Button layoutX="256.0" layoutY="419.0" mnemonicParsing="false" text="Salvar" />
-            <Button layoutX="324.0" layoutY="419.0" lineSpacing="10.0" mnemonicParsing="false" text="Cancelar" />
+            <Button layoutX="256.0" layoutY="419.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
+            <Button layoutX="324.0" layoutY="419.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
          </children>
       </HBox>
    </children>

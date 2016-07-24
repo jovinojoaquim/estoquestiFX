@@ -66,6 +66,7 @@ public class PesquisarEnderecoController implements Initializable{
 	@FXML
 	public void selecionar(){
 		fornecedorController.recebeEndereco(tableEnderecos.getSelectionModel().getSelectedItem());
+		palco.close();
 	}
 	
 	@FXML

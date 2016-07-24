@@ -14,11 +14,12 @@
 		<property name="hbm2ddl.auto">update</property>
 		
 		<mapping class="estoquestiFX.domain.DptoUsuario"/>
+		<mapping class="estoquestiFX.domain.Fornecedor"/>
 		<mapping class="estoquestiFX.domain.Categoria"/>
 		<mapping class="estoquestiFX.domain.Endereco"/>
 		<mapping class="estoquestiFX.domain.Produto"/>
+		<mapping class="estoquestiFX.domain.Contato"/>	
 		<mapping class="estoquestiFX.domain.Cidade"/>
-		<mapping class="estoquestiFX.domain.Estado"/>		
-		
+		<mapping class="estoquestiFX.domain.Estado"/>			
 	</session-factory>
 </hibernate-configuration>

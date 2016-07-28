@@ -2,6 +2,9 @@ package estoquestiFX.dao;
 
 
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -21,6 +24,20 @@ public class FornecedorDAO {
 			throw e;
 		}
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Fornecedor> buscar(String razaoSocial) {
+		Session sessao = HibernateUtil.getSessionfactory().openSession();
+		List<Fornecedor> listaDeFornecedores = null;
+		try{
+			Query consulta = sessao.getNamedQuery("Fornecedor.buscarRazaoSocial");
+			consulta.setString("razaoSocial", razaoSocial+"%");
+			listaDeFornecedores = consulta.list();
+		}catch (RuntimeException e) {
+			throw e;
+		}
+		return listaDeFornecedores;
 	}
 
 }

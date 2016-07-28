@@ -49,5 +49,10 @@ public class FornecedorBean {
 				}
 			}
 	}
+
+	public List<Fornecedor> buscar(String razaoSocial) {
+		FornecedorDAO dao = new FornecedorDAO();
+		return dao.buscar(razaoSocial);
+	}
 	
 }

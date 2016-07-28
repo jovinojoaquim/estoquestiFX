@@ -11,12 +11,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Fornecedor.buscarRazaoSocial", query = "SELECT fornecedor FROM Fornecedor fornecedor WHERE fornecedor.razaoSocial LIKE :razaoSocial")
+})
 public class Fornecedor {
 
 	@Id

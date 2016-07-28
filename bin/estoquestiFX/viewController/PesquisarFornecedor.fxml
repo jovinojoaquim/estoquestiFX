@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="estoquestiFX.viewController.PesquisarFornecedorController">
+   <children>
+      <Label layoutX="27.0" layoutY="21.0" text="Razão Social:" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="356.0" />
+      <TextField fx:id="razaoSocial" layoutX="27.0" layoutY="38.0" prefHeight="25.0" prefWidth="395.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="30.0" onKeyPressed="#pesquisarFornecedor"/>
+      <TableView fx:id="tableViewFornecedor" layoutX="27.0" layoutY="73.0" onKeyPressed="#pesquisarFornecedor" prefHeight="255.0" prefWidth="395.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="30.0">
+        <columns>
+          <TableColumn fx:id="tableColumnRazaoSocial" minWidth="50.0" prefWidth="75.0" text="Razão Social" />
+          <TableColumn fx:id="tableColumnNomeFantasia" prefWidth="75.0" text="Nome Fantasia" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <HBox layoutX="199.0" layoutY="348.0" spacing="10.0" AnchorPane.rightAnchor="30.0">
+         <children>
+            <Button layoutX="199.0" layoutY="348.0" mnemonicParsing="false" onAction="#selecionarFornecedor" text="Selecionar" />
+            <Button layoutX="251.0" layoutY="348.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

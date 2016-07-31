@@ -13,7 +13,7 @@
       <TextField fx:id="textFieldPesquisaProduto" layoutX="112.0" layoutY="10.0" onKeyReleased="#pesquisarProduto" prefHeight="25.0" prefWidth="335.0" AnchorPane.leftAnchor="112.0" AnchorPane.rightAnchor="20.0" />
       <HBox layoutX="197.0" layoutY="340.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="20.0">
          <children>
-            <Button layoutX="197.0" layoutY="340.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+            <Button fx:id="botaoEditar" layoutX="197.0" layoutY="340.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
             <Button layoutX="244.0" layoutY="340.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
          </children>
       </HBox>

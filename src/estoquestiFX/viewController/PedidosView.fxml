@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="estoquestiFX.viewController.PedidosController">
    <children>
       <GridPane layoutX="41.0" layoutY="38.0" prefHeight="96.0" prefWidth="374.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="41.0">
         <columnConstraints>
@@ -25,7 +24,7 @@
             <Label text="Data Pedido:" GridPane.rowIndex="1" />
             <Label text="Aprovação:" GridPane.rowIndex="2" />
             <Label text="Fornecedor:" />
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldFornecedor" onKeyPressed="#buscarFornecedor" GridPane.columnIndex="1" />
             <DatePicker maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="252.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <CheckBox mnemonicParsing="false" text="Aprovado:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
@@ -51,7 +50,7 @@
       </HBox>
       <HBox layoutX="35.0" layoutY="396.0" spacing="10.0" AnchorPane.leftAnchor="28.0">
          <children>
-            <Button layoutX="35.0" layoutY="396.0" mnemonicParsing="false" text="Adicionar" />
+            <Button layoutX="35.0" layoutY="396.0" mnemonicParsing="false" onAction="#buscarProduto" text="Adicionar" />
             <Button layoutX="113.0" layoutY="402.0" mnemonicParsing="false" text="Remover" />
          </children>
       </HBox>

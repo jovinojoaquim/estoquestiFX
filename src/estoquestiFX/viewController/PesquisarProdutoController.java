@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Cell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -48,6 +49,10 @@ public class PesquisarProdutoController implements Initializable{
 	@FXML
 	private TextField textFieldPesquisaProduto;
 	
+	@FXML
+	private Button botaoEditar;
+	private PedidosController pedidosController;
+	
 	public void setDialogStage(Stage palco) {
 		this.palco = palco;
 	}
@@ -74,9 +79,13 @@ public class PesquisarProdutoController implements Initializable{
 	
 	@FXML
 	private void editar(){
-		Produto p = produtoTabela.getSelectionModel().getSelectedItem();
-		pController.recebeProduto(p);
-		palco.close();
+		if(botaoEditar.getText().equals("Editar")){
+			Produto p = produtoTabela.getSelectionModel().getSelectedItem();
+			pController.recebeProduto(p);
+			palco.close();
+		}else{
+			pedidosController.recebeProduto(produtoTabela.getSelectionModel().getSelectedItem());
+		}
 	}
 	
 	@FXML
@@ -94,6 +103,11 @@ public class PesquisarProdutoController implements Initializable{
 
 	public void recebeTela(ProdutoController pController) {
 		this.pController = pController;	
+	}
+
+	public void setPedidosController(PedidosController pedidosController) {
+		this.pedidosController = pedidosController;
+		botaoEditar.setText("Selecionar");
 	}
 	
 	

@@ -8,11 +8,13 @@ import estoquestiFX.app.PesquisarFornecedorMain;
 import estoquestiFX.app.PesquisarProdutoMain;
 import estoquestiFX.domain.Fornecedor;
 import estoquestiFX.domain.Produto;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -20,7 +22,7 @@ import javafx.stage.Stage;
 public class PedidosController {
 	Fornecedor fornecedor;
 	List<Produto> listaDeProdutos = new ArrayList<>();
-	ObservableList<Produto> obsevableListProduto = FXCollections.observableArrayList();
+	private ObservableList<Produto> obsevableListProduto = FXCollections.observableArrayList();
 	private Stage palco;
 	
 	@FXML
@@ -34,6 +36,9 @@ public class PedidosController {
 	
 	@FXML
 	private TableView<Produto> tabelaProduto;
+	
+	@FXML
+	private TableColumn<Produto, String> tableColumnNome;
 	
 	
 	@FXML
@@ -71,6 +76,8 @@ public class PedidosController {
 		obsevableListProduto.setAll(listaDeProdutos);
 		
 		tabelaProduto.setItems(obsevableListProduto);
+		
+		tableColumnNome.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNome()));
 	}
 	
 	

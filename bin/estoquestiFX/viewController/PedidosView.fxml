@@ -25,14 +25,14 @@
             <Label text="Aprovação:" GridPane.rowIndex="2" />
             <Label text="Fornecedor:" />
             <TextField fx:id="textFieldFornecedor" onKeyPressed="#buscarFornecedor" GridPane.columnIndex="1" />
-            <DatePicker maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="252.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Aprovado:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="datePickerData" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="252.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox fx:id="checkBoxAprovado" mnemonicParsing="false" text="Aprovado:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TableView layoutX="28.0" layoutY="166.0" prefHeight="208.0" prefWidth="397.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="41.0">
+      <TableView fx:id="tabelaProduto" editable="false" layoutX="28.0" layoutY="166.0" prefHeight="208.0" prefWidth="397.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="41.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Produto" />
-          <TableColumn prefWidth="109.0" text="Quantidade" />
+          <TableColumn fx:id="tableColumnNome" editable="false" prefWidth="75.0" text="Produto" />
+          <TableColumn editable="true" prefWidth="109.0" text="Quantidade" />
             <TableColumn prefWidth="66.0" text="Medida" />
             <TableColumn maxWidth="7000.0" prefWidth="71.0" text="Preço de Compra" />
         </columns>

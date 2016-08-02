@@ -16,9 +16,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ProdutoController implements Initializable{
 	ObservableList<String> listaObservable = FXCollections.observableArrayList();
@@ -26,6 +28,9 @@ public class ProdutoController implements Initializable{
 	private Main main;
 	private Categoria categoriaSelecionada;
 	private Long id = null;
+	private Stage palco;
+	private PedidosController pedidosController;
+	private Produto produto;
 	
 	@FXML
 	private ComboBox<String> categoriaComboBox;
@@ -42,6 +47,16 @@ public class ProdutoController implements Initializable{
 	@FXML
 	private TextField valorVendaTextField;
 	@FXML
+	private Button botaoSalvar;
+	@FXML
+	private Button botaoPesquisar;
+	@FXML
+	private Button botaoNovo;
+	@FXML
+	private Button botaoCancelar;
+
+
+	@FXML
 	private void novaCategoria(){
 		this.main.iniciaTelaCategoria(this);
 	}
@@ -49,8 +64,8 @@ public class ProdutoController implements Initializable{
 	public ProdutoController(){	
 	}
 
-	public void setMainApp(Main main) {
-		this.main = main;	
+	public void setMainApp(Stage main) {
+		this.palco = main;	
 	}
 
 	@Override
@@ -142,7 +157,18 @@ public class ProdutoController implements Initializable{
 	
 	@FXML
 	private void iniciarPesquisa(){
-		main.iniciaTelaPesquisaProduto(this);
+		if(!botaoPesquisar.getText().equals("Selecionar")){
+			main.iniciaTelaPesquisaProduto(this);
+		}else{
+			Double quantidade = converteParaDouble(quantidadeTextField.getText(), "Quantidade");
+			Double valorVenda = converteParaDouble(valorVendaTextField.getText(), "Valor Venda");
+			produto.setMarca(marcaTextField.getText());
+			produto.setCategoria(categoriaSelecionada);
+			produto.setMedida(medidaTextField.getText());
+			produto.setValorVenda(valorVenda);
+			produto.setQuantidade(quantidade);
+			pedidosController.recebeProduto(produto);
+		}
 	}
 	
 	@FXML
@@ -231,5 +257,19 @@ public class ProdutoController implements Initializable{
 		valorVendaTextField.setText(String.valueOf(p.getValorVenda()));
 		marcaTextField.setText(p.getMarca());
 		categoriaComboBox.getSelectionModel().select(p.getCategoria().getCategoria());
+	}
+
+	public void recebePedidosController(PedidosController pedidosController) {
+		this.pedidosController = pedidosController;	
+	}
+
+	public void recebeProdutoCompra(Produto p) {
+		this.produto = p;
+		nomeTextField.setEditable(false);
+		descricaoTextField.setEditable(false);
+		botaoSalvar.setVisible(false);
+		botaoCancelar.setVisible(false);
+		botaoNovo.setVisible(false);
+		botaoPesquisar.setText("Selecionar");
 	}
 }

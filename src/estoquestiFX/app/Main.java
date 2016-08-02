@@ -55,7 +55,7 @@ public class Main extends Application {
 			this.primaryStage.setScene(scene);
 			
 			ProdutoController controller = loader.getController();
-			controller.setMainApp(this);		
+//			controller.setMainApp(this);		
 			
 			this.primaryStage.show();
 		} catch (IOException e) {

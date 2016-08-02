@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import estoquestiFX.app.Main;
+import estoquestiFX.app.ProdutoMain;
 import estoquestiFX.bean.ProdutoBean;
 import estoquestiFX.domain.Produto;
 import javafx.beans.property.StringProperty;
@@ -84,7 +85,14 @@ public class PesquisarProdutoController implements Initializable{
 			pController.recebeProduto(p);
 			palco.close();
 		}else{
-			pedidosController.recebeProduto(produtoTabela.getSelectionModel().getSelectedItem());
+			ProdutoMain main = new ProdutoMain();
+			main.setPedidosController(pedidosController, produtoTabela.getSelectionModel().getSelectedItem());
+			Stage primaryStage = new Stage();
+			primaryStage.setTitle("Comprar Produto");
+			main.start(primaryStage);
+			
+//			pedidosController.recebeProduto(produtoTabela.getSelectionModel().getSelectedItem());
+			palco.close();
 		}
 	}
 	

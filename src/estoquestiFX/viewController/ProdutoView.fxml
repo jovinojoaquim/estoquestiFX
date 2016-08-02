@@ -45,10 +45,10 @@
       </GridPane>
       <HBox layoutX="61.0" layoutY="326.0" spacing="6.0" AnchorPane.rightAnchor="61.0">
          <children>
-            <Button layoutX="55.0" layoutY="320.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
-            <Button layoutX="107.0" layoutY="320.0" mnemonicParsing="false" onAction="#novoProduto" text="Novo" />
-            <Button layoutX="170.0" layoutY="320.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
-            <Button layoutX="300.0" layoutY="320.0" mnemonicParsing="false" onAction="#iniciarPesquisa" text="Pesquisar" />
+            <Button fx:id="botaoCancelar" layoutX="55.0" layoutY="320.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
+            <Button fx:id="botaoNovo" layoutX="107.0" layoutY="320.0" mnemonicParsing="false" onAction="#novoProduto" text="Novo" />
+            <Button fx:id="botaoSalvar" layoutX="170.0" layoutY="320.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
+            <Button fx:id="botaoPesquisar" layoutX="300.0" layoutY="320.0" mnemonicParsing="false" onAction="#iniciarPesquisa" text="Pesquisar" />
          </children>
       </HBox>
    </children>

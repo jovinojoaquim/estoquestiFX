@@ -8,6 +8,7 @@ import estoquestiFX.app.PesquisarFornecedorMain;
 import estoquestiFX.app.PesquisarProdutoMain;
 import estoquestiFX.domain.Fornecedor;
 import estoquestiFX.domain.Produto;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +25,7 @@ public class PedidosController {
 	List<Produto> listaDeProdutos = new ArrayList<>();
 	private ObservableList<Produto> obsevableListProduto = FXCollections.observableArrayList();
 	private Stage palco;
+	private Double totalCompra;
 	
 	@FXML
 	private TextField textFieldFornecedor;
@@ -39,6 +41,18 @@ public class PedidosController {
 	
 	@FXML
 	private TableColumn<Produto, String> tableColumnNome;
+	
+	@FXML
+	private TableColumn<Produto, String> tableColumnQuantidade;
+	
+	@FXML
+	private TableColumn<Produto, String> tableColumnPrecoCompra;
+	
+	@FXML
+	private TableColumn<Produto, String> tableColumnTotalCompra;
+	
+	@FXML
+	private TextField textFieldTotal;
 	
 	
 	@FXML
@@ -78,6 +92,14 @@ public class PedidosController {
 		tabelaProduto.setItems(obsevableListProduto);
 		
 		tableColumnNome.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNome()));
+		tableColumnQuantidade.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getQuantidade().toString().replace(".0", "")));
+		tableColumnPrecoCompra.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValorCompra().toString()));
+		
+		double precoTotalProduto = selectedItem.getQuantidade()*selectedItem.getValorCompra();
+		tableColumnTotalCompra.setCellValueFactory(data -> new SimpleStringProperty(String.valueOf(precoTotalProduto)));
+		
+		totalCompra+= precoTotalProduto;
+		textFieldTotal.setText(String.valueOf(totalCompra));
 	}
 	
 	

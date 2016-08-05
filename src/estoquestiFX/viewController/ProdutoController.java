@@ -54,6 +54,8 @@ public class ProdutoController implements Initializable{
 	private Button botaoNovo;
 	@FXML
 	private Button botaoCancelar;
+	@FXML
+	private TextField valorCompraTextField;
 
 
 	@FXML
@@ -104,6 +106,7 @@ public class ProdutoController implements Initializable{
 	private void salvar(){
 		Double quantidade = converteParaDouble(quantidadeTextField.getText(), "Quantidade");
 		Double valorVenda = converteParaDouble(valorVendaTextField.getText(), "Valor Venda");
+		Double valorCompra = converteParaDouble(valorVendaTextField.getText(), "Valor Compra");
 		ProdutoBean pbean = new ProdutoBean();
 		
 		if(validaCampos() && id == null){
@@ -112,7 +115,7 @@ public class ProdutoController implements Initializable{
 				pbean.salvar(nomeTextField.getText(), descricaoTextField.getText(),
 							 quantidade, medidaTextField.getText(), 
 							 marcaTextField.getText(), valorVenda,
-							 categoriaSelecionada);
+							 categoriaSelecionada, valorCompra);
 				Alert alerta = new Alert(AlertType.INFORMATION);
 				alerta.setHeaderText("Salvar Produto");
 				alerta.setContentText("PRODUTO SALVO COM SUCESSO");
@@ -160,21 +163,29 @@ public class ProdutoController implements Initializable{
 		if(!botaoPesquisar.getText().equals("Selecionar")){
 			main.iniciaTelaPesquisaProduto(this);
 		}else{
-			Double quantidade = converteParaDouble(quantidadeTextField.getText(), "Quantidade");
-			Double valorVenda = converteParaDouble(valorVendaTextField.getText(), "Valor Venda");
-			produto.setMarca(marcaTextField.getText());
-			produto.setCategoria(categoriaSelecionada);
-			produto.setMedida(medidaTextField.getText());
-			produto.setValorVenda(valorVenda);
-			produto.setQuantidade(quantidade);
-			pedidosController.recebeProduto(produto);
+			produtoSelecionadoParaPedido();
 		}
+	}
+
+	private void produtoSelecionadoParaPedido() {
+		Double quantidade = converteParaDouble(quantidadeTextField.getText(), "Quantidade");
+		Double valorVenda = converteParaDouble(valorVendaTextField.getText(), "Valor Venda");
+		Double valorCompra = converteParaDouble(valorCompraTextField.getText(), "Valor Compra");
+		produto.setMarca(marcaTextField.getText());
+		produto.setCategoria(categoriaSelecionada);
+		produto.setMedida(medidaTextField.getText());
+		produto.setValorVenda(valorVenda);
+		produto.setQuantidade(quantidade);
+		produto.setValorCompra(valorCompra);
+		pedidosController.recebeProduto(produto);
+		palco.close();
 	}
 	
 	@FXML
 	private void fechar(){
 		try {
 			main.stop();
+			palco.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

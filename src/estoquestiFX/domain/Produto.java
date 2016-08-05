@@ -40,6 +40,9 @@ public class Produto {
 	@Column(length = 45, nullable = false)
 	private String marca;
 	
+	@Column(nullable = false, length = 45, precision = 7, scale = 2)
+	private Double valorCompra;
+	
 	@Column(length = 45, nullable = false, precision = 7, scale = 2)
 	private Double valorVenda;
 	
@@ -111,4 +114,11 @@ public class Produto {
 		this.categoria = categoria;
 	}
 
+	public Double getValorCompra() {
+		return valorCompra;
+	}
+	
+	public void setValorCompra(Double valorCompra) {
+		this.valorCompra = valorCompra;
+	}
 }

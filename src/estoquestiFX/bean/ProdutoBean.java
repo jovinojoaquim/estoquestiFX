@@ -7,7 +7,7 @@ import estoquestiFX.domain.Produto;
 import javafx.beans.property.StringProperty;
 
 public class ProdutoBean {
-	public void salvar(String nome, String descricao, double quantidade, String medida, String marca, double valorVenda, Categoria categoriaSelecionada){
+	public void salvar(String nome, String descricao, double quantidade, String medida, String marca, double valorVenda, Categoria categoriaSelecionada, Double valorCompra){
 		ProdutoDAO dao = new ProdutoDAO();
 		Produto p = new Produto();
 		
@@ -18,6 +18,7 @@ public class ProdutoBean {
 		p.setMarca(marca);
 		p.setValorVenda(valorVenda);
 		p.setCategoria(categoriaSelecionada);
+		p.setValorCompra(valorCompra);
 		
 		dao.salvar(p);
 	}

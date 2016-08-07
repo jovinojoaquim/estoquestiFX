@@ -1,11 +1,13 @@
 package estoquestiFX.viewController;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import estoquestiFX.app.Main;
 import estoquestiFX.app.PesquisarFornecedorMain;
 import estoquestiFX.app.PesquisarProdutoMain;
+import estoquestiFX.bean.PedidoBean;
 import estoquestiFX.domain.Fornecedor;
 import estoquestiFX.domain.Produto;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -25,7 +27,7 @@ public class PedidosController {
 	List<Produto> listaDeProdutos = new ArrayList<>();
 	private ObservableList<Produto> obsevableListProduto = FXCollections.observableArrayList();
 	private Stage palco;
-	private Double totalCompra;
+	private Double totalCompra = 0.0;
 	
 	@FXML
 	private TextField textFieldFornecedor;
@@ -74,6 +76,16 @@ public class PedidosController {
 		
 	}
 	
+	@FXML
+	private void salvar(){
+		PedidoBean pbean = new PedidoBean();
+		try {
+			pbean.salvar(fornecedor, datePickerData, checkBoxAprovado, listaDeProdutos);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void recebeFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 		textFieldFornecedor.setText(fornecedor.getRazaoSocial()+" - "+fornecedor.getNomeFantasia());		
@@ -95,12 +107,14 @@ public class PedidosController {
 		tableColumnQuantidade.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getQuantidade().toString().replace(".0", "")));
 		tableColumnPrecoCompra.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValorCompra().toString()));
 		
-		double precoTotalProduto = selectedItem.getQuantidade()*selectedItem.getValorCompra();
+		Double precoTotalProduto = selectedItem.getQuantidade()*selectedItem.getValorCompra();
 		tableColumnTotalCompra.setCellValueFactory(data -> new SimpleStringProperty(String.valueOf(precoTotalProduto)));
 		
 		totalCompra+= precoTotalProduto;
 		textFieldTotal.setText(String.valueOf(totalCompra));
 	}
+	
+
 	
 	
 }

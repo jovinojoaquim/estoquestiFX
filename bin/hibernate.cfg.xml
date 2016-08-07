@@ -12,7 +12,8 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">false</property>
 		<property name="hbm2ddl.auto">update</property>
-		
+
+		<mapping class="estoquestiFX.domain.PedidosProduto"/>		
 		<mapping class="estoquestiFX.domain.DptoUsuario"/>
 		<mapping class="estoquestiFX.domain.Fornecedor"/>
 		<mapping class="estoquestiFX.domain.Categoria"/>
@@ -20,6 +21,7 @@
 		<mapping class="estoquestiFX.domain.Produto"/>
 		<mapping class="estoquestiFX.domain.Contato"/>	
 		<mapping class="estoquestiFX.domain.Cidade"/>
-		<mapping class="estoquestiFX.domain.Estado"/>			
+		<mapping class="estoquestiFX.domain.Estado"/>	
+		<mapping class="estoquestiFX.domain.Pedido"/>		
 	</session-factory>
 </hibernate-configuration>

@@ -27,10 +27,6 @@ public class ProdutoBean {
 		ProdutoDAO dao = new ProdutoDAO();
 		return dao.listarProdutos();
 	}
-	
-	public void editar(Produto p){
-		
-	}
 
 	public void editar(Long id, String nome, String descricao, double quantidade, String medida, String marca, double valorVenda, Categoria categoriaSelecionada) {
 		ProdutoDAO dao = new ProdutoDAO();
@@ -51,5 +47,10 @@ public class ProdutoBean {
 	public List<Produto> pesquisarProduto(String nomeProduto) {
 		ProdutoDAO dao = new ProdutoDAO();
 		return dao.pesquisarProduto(nomeProduto);
+	}
+	
+	public Produto pesquisarProduto(Long idProduto){
+		ProdutoDAO dao = new ProdutoDAO();
+		return dao.pesquisarProduto(idProduto);
 	}
 }

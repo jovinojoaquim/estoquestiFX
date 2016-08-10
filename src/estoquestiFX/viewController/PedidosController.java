@@ -113,8 +113,4 @@ public class PedidosController {
 		totalCompra+= precoTotalProduto;
 		textFieldTotal.setText(String.valueOf(totalCompra));
 	}
-	
-
-	
-	
 }

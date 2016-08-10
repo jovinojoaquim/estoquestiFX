@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import estoquestiFX.dao.PedidoDAO;
+import estoquestiFX.dao.ProdutoDAO;
 import estoquestiFX.domain.Fornecedor;
 import estoquestiFX.domain.Pedido;
 import estoquestiFX.domain.PedidosProduto;
@@ -24,6 +25,24 @@ public class PedidoBean {
 		PedidosProduto pp = new PedidosProduto();
 		PedidoDAO dao = new PedidoDAO();
 		
+		if(checkBoxAprovado.isSelected()){
+			ProdutoBean pbean = new ProdutoBean();
+			for(int i = 0; i< listaDeProdutos.size(); i++){
+				Produto produto = pbean.pesquisarProduto(listaDeProdutos.get(i).getIdProduto());
+				produto.setQuantidade(produto.getQuantidade()+listaDeProdutos.get(i).getQuantidade());
+				produto.setValorVenda(listaDeProdutos.get(i).getValorVenda());
+				pbean.editar(produto.getIdProduto(), produto.getNome(), produto.getDescricao(), produto.getQuantidade(), 
+						produto.getMedida(), produto.getMarca(), produto.getValorVenda(), produto.getCategoria());
+	
+			}
+			salvarPedido(fornecedor, datePickerData, checkBoxAprovado, listaDeProdutos, p, pp, dao);
+		}else{
+			salvarPedido(fornecedor, datePickerData, checkBoxAprovado, listaDeProdutos, p, pp, dao);
+		}
+	}
+
+	private void salvarPedido(Fornecedor fornecedor, DatePicker datePickerData, CheckBox checkBoxAprovado,
+							List<Produto> listaDeProdutos, Pedido p, PedidosProduto pp, PedidoDAO dao) {
 		List<PedidosProduto> listaDePedidosProduto = new ArrayList<>();
 		for(int i =0; i< listaDeProdutos.size(); i++){
 			pp.setQuantidade(listaDeProdutos.get(i).getQuantidade());

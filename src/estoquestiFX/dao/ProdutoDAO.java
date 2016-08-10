@@ -2,6 +2,7 @@ package estoquestiFX.dao;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -66,5 +67,20 @@ public class ProdutoDAO {
 			e.printStackTrace();
 		}
 		return listaDeProdutos;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Produto pesquisarProduto(Long id){
+		Session session = HibernateUtil.getSessionfactory().openSession();
+//		List<Produto> listaDeProdutos = null;
+		Produto p = new Produto();
+		try{
+			Query consulta = session.getNamedQuery("Produto.buscarPorCodigo");
+			consulta.setLong("id", id);
+			p = (Produto) consulta.uniqueResult();
+		}catch (RuntimeException e) {
+			e.printStackTrace();
+		}
+		return p;
 	}
 }

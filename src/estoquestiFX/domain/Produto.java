@@ -17,7 +17,8 @@ import javafx.beans.property.SimpleStringProperty;
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "Produto.listar", query = "SELECT produto FROM Produto produto"),
-	@NamedQuery(name = "Produto.buscarPorNome", query = "SELECT produto FROM Produto produto WHERE produto.nome LIKE :produto")
+	@NamedQuery(name = "Produto.buscarPorNome", query = "SELECT produto FROM Produto produto WHERE produto.nome LIKE :produto"),
+	@NamedQuery(name = "Produto.buscarPorCodigo", query = "SELECT produto FROM Produto produto WHERE produto.idProduto = :id")
 })
 public class Produto {
 	
